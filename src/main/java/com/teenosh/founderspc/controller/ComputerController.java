@@ -27,4 +27,9 @@ public class ComputerController {
     public ResponseEntity<Computer> getPcById(@PathVariable Long id) {
         return computerRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+
+    @PostMapping
+    public Computer createComputer(@RequestBody Computer computer) {
+        return computerRepository.save(computer);
+    }
 }
